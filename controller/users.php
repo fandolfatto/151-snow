@@ -12,8 +12,8 @@ require "model/userMgt.php";
 function login($data) {
     //check if email is set, if we come from the login page and click on the login button
     if (isset($data['email'])) {
-        //TO DO : traiter le retour du checklogin pour la redirection
-        if (checkLogin($data)) {
+        //if (checkLogin($data)) {
+        if (isLoginCorrect($data['email'], $data['userPswd'])) {
             $_SESSION['email']=$data['email'];
             require "view/home.php";
         } else {
