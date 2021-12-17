@@ -98,6 +98,10 @@
                             <?php } ?>
                         </li>
 
+                        <li>
+                            <a href="index.php?action=displayArticles">Articles</a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
@@ -164,6 +168,10 @@
                     <?php } else { ?>
                         <a href="index.php?action=login">Login</a>
                     <?php } ?>
+                </li>
+
+                <li class="item-menu-mobile">
+                    <a href="index.php?action=displayArticles">Articles</a>
                 </li>
 
             </ul>

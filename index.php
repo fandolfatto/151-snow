@@ -11,6 +11,7 @@ session_start();
 
 require "controller/navigation.php";
 require "controller/users.php";
+require "controller/articles.php";
 
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
@@ -23,6 +24,12 @@ if (isset($_GET['action'])) {
             break;
         case 'logout' :
             logout();
+            break;
+        case 'displayArticles' :
+            displayArticles();
+            break;
+        case 'displayArticleDetail' :
+            displayArticleDetail($_GET['articleId']);
             break;
         default :
             lost();
