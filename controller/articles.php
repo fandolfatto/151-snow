@@ -12,7 +12,7 @@ function displayArticles() {
 
     try {
         $articlesList = findArticles();
-    } catch (ModelDataBaseException $ex) {
+    } catch (Exception $ex) {
         $articleErrorMessage = "Nous rencontrons temporairement un problème technique pour afficher nos produits. Désolé du dérangement !";
     } finally {
         require "view/articles.php";
@@ -23,7 +23,7 @@ function displayArticles() {
 function displayArticleDetail($articleId) {
     try {
         $articlesInfo = findArticleWithId($articleId);
-    } catch (ModelDataBaseException $ex) {
+    } catch (Exception $ex) {
         $articleErrorMessage = "Nous rencontrons temporairement un problème technique pour afficher le produit demandé. Désolé du dérangement !";
     } finally {
         require "view/article-detail.php";

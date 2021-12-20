@@ -12,6 +12,11 @@ ob_start();
 
 ?>
 
+<?php if (isset($articleErrorMessage)) { ?>
+    <br>
+    <h5><span style="color:#ff0000"><?= $articleErrorMessage; ?></span></h5>
+<?php } else { ?>
+
 <!-- Product Detail -->
 <div class="container bgwhite p-t-35 p-b-80">
     <div class="flex-w flex-sb">
@@ -83,7 +88,7 @@ ob_start();
                             </button>
                         </div>
 
-                        <!--comprendre retour à la ligne ici avec ajouter au panier très long-->
+
                     </div>
                 </div>
 
@@ -109,7 +114,7 @@ ob_start();
 
                 <div class="dropdown-content dis-none p-t-15 p-b-23">
                     <p class="s-text8">
-                        <?=$articlesInfo['descriptionfull'];?>
+                        <?= $articlesInfo['descriptionfull'];?>
                     </p>
                 </div>
             </div>
@@ -120,6 +125,8 @@ ob_start();
 </div>
 
 <?php
+}
+
 $content = ob_get_clean();
 require 'gabarit.php';
 ?>
