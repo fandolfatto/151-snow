@@ -14,7 +14,7 @@ function login($data) {
     if (isset($data['email'])) {
         //if (checkLogin($data)) {
         if (isLoginCorrect($data['email'], $data['userPswd'])) {
-            $_SESSION['email']=$data['email'];
+            createSession($data['email']);
             require "view/home.php";
         } else {
             $errorMsg = "Erreur email ou mot de passe incorrect";
@@ -23,6 +23,31 @@ function login($data) {
     } else { //we ask login page
         require "view/login.php";
     }
+}
+
+
+function register($loginRequest) {
+
+    if (isset($loginRequest['userPswd']) && isset($loginRequest['email']) && isset($loginRequest['userPswd2'])) {
+        if ($loginRequest['userPswd'] != $loginRequest['userPswd2']) {
+            $errorMsgRegister = "Pwd différents";
+            require "view/register.php";
+        } else {
+            if (registerLogin($loginRequest["email"], $loginRequest["userPswd"])) {
+                createSession($loginRequest["email"]);
+                require "view/home.php";
+            } else {
+                $errorMsgRegister = "Erreur insertion user";
+                require "view/register.php";
+            }
+        }
+    } else {
+        require "view/register.php";
+    }
+}
+
+function createSession($email) {
+    $_SESSION['email'] = $email;
 }
 
 function logout()

@@ -50,3 +50,16 @@ function isLoginCorrect($userEmailAddress, $userPsw)
     }
     return $result;
 }
+
+function registerLogin($email, $pwd){
+    $result = false;
+
+    $loginQuery = "insert into users(userEmailAddress, userHashPsw, isAdmin) VALUES	(:femail, :fpwd, 0)";
+
+    $userHashPsw = password_hash($pwd, PASSWORD_DEFAULT);
+
+    require_once 'model/dbConnector.php';
+    $params = array(':femail' => $email,':fpwd' => $userHashPsw);
+    return executeQueryInsert($loginQuery,$params);
+
+}

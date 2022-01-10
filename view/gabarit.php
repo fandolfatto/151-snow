@@ -102,6 +102,13 @@
                             <a href="index.php?action=displayArticles">Articles</a>
                         </li>
 
+                        <?php
+                        if (!isset($_SESSION['email'])) { ?>
+                        <li>
+                            <a href="index.php?action=register">S'enregistrer</a>
+                        </li>
+                        <?php } ?>
+
                     </ul>
                 </nav>
             </div>
@@ -174,6 +181,12 @@
                     <a href="index.php?action=displayArticles">Articles</a>
                 </li>
 
+                <?php
+                if (!isset($_SESSION['email'])) { ?>
+                    <li class="item-menu-mobile">
+                        <a href="index.php?action=register">S'enregistrer</a>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
     </div>

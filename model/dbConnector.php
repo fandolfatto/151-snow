@@ -67,12 +67,24 @@ function executeQuerySelect($query, $params)
 
 /**
  * @brief This function is designed to insert value in database
- * @param $query
- * @return null
+ * @param $query the query itself
+ * @param $params : values of the query parameters
+ * @return true | false
  */
-function executeQueryInsert($query)
+function executeQueryInsert($query, $params)
 {
-
+    $queryResult = null;
+    try {
+        $dbConnexion = openDBConnexion(); // Ouvre la connection à la BD
+        if ($dbConnexion != null) {
+            $statement = $dbConnexion->prepare($query); // Préparation de la requête
+            $queryResult = $statement->execute($params); // Exécution de la requête
+        }
+    } catch (PDOException $pdoEx){
+        $queryResult = false;
+    }
+    $dbConnexion = null; // Fermeture de la connection à la BD
+    return $queryResult;
 }
 
 

@@ -31,6 +31,9 @@ if (isset($_GET['action'])) {
         case 'displayArticleDetail' :
             displayArticleDetail($_GET['articleId']);
             break;
+        case 'register' :
+            register($_POST);
+            break;
         default :
             lost();
     }
