@@ -26,15 +26,15 @@ function login($data) {
 }
 
 
-function register($loginRequest) {
+function register($loginInfo) {
 
-    if (isset($loginRequest['userPswd']) && isset($loginRequest['email']) && isset($loginRequest['userPswd2'])) {
-        if ($loginRequest['userPswd'] != $loginRequest['userPswd2']) {
+    if (isset($loginInfo['userPswd']) && isset($loginInfo['email']) && isset($loginInfo['userPswd2'])) {
+        if ($loginInfo['userPswd'] != $loginInfo['userPswd2']) {
             $errorMsgRegister = "Pwd différents";
             require "view/register.php";
         } else {
-            if (registerLogin($loginRequest["email"], $loginRequest["userPswd"])) {
-                createSession($loginRequest["email"]);
+            if (registerLogin($loginInfo["email"], $loginInfo["userPswd"])) {
+                createSession($loginInfo["email"]);
                 require "view/home.php";
             } else {
                 $errorMsgRegister = "Erreur insertion user";
