@@ -87,6 +87,7 @@ function addArticleItem($data) {
             if ($_FILES['inputItemPhoto']['size'] < 1000000) {
                 if (is_uploaded_file($_FILES['inputItemPhoto']['tmp_name'])) {
                     // Notice how to grab MIME type
+                    // Be careful, you have to decomment "extension = fileinfo" in php.ini
                     $mimeType = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $_FILES['inputItemPhoto']['tmp_name']);
 
                     // If you want to allow certain files
