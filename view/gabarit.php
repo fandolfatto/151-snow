@@ -103,6 +103,13 @@
                         </li>
 
                         <?php
+                        if (isset($_SESSION['email']) && isset($_SESSION['isAdmin']) && ($_SESSION['isAdmin'] == 1)) { ?>
+                            <li>
+                                <a href="index.php?action=displayArticlesAdmin">Gestion</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php
                         if (!isset($_SESSION['email'])) { ?>
                         <li>
                             <a href="index.php?action=register">S'enregistrer</a>
@@ -180,6 +187,14 @@
                 <li class="item-menu-mobile">
                     <a href="index.php?action=displayArticles">Articles</a>
                 </li>
+
+                <?php
+                if (isset($_SESSION['email']) && isset($_SESSION['isAdmin']) && ($_SESSION['isAdmin'] == 1)) { ?>
+                    <li class="item-menu-mobile">
+                        <a href="index.php?action=displayArticlesAdmin">Gestion</a>
+                    </li>
+                <?php
+                } ?>
 
                 <?php
                 if (!isset($_SESSION['email'])) { ?>

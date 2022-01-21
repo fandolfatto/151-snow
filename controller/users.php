@@ -15,6 +15,9 @@ function login($data) {
         //if (checkLogin($data)) {
         if (isLoginCorrect($data['email'], $data['userPswd'])) {
             createSession($data['email']);
+            if (isUserAdmin($data["email"])){
+                $_SESSION['isAdmin'] = 1;
+            }
             require "view/home.php";
         } else {
             $errorMsg = "Erreur email ou mot de passe incorrect";

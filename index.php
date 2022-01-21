@@ -28,11 +28,29 @@ if (isset($_GET['action'])) {
         case 'displayArticles' :
             displayArticles();
             break;
+        case 'displayArticlesAdmin' :
+            displayArticlesAdmin();
+            break;
         case 'displayArticleDetail' :
             displayArticleDetail($_GET['articleId']);
             break;
         case 'register' :
             register($_POST);
+            break;
+        case 'articleRemove' :
+            removeArticle($_GET['code']);
+            break;
+        case 'articleUpdate' :
+            updateArticle($_GET['code']);
+            break;
+        case 'articleUpdateItem' :
+            updateArticleItem($_POST);
+            break;
+        case 'articleAdd' :
+            addArticle();
+            break;
+        case 'articleAddItem' :
+            addArticleItem($_POST);
             break;
         default :
             lost();

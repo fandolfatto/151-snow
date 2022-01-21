@@ -26,6 +26,27 @@ function checkLogin($data) {
 }
 
 /**
+ * @brief This function is designed to check if the user is admin or not
+ * @param $userEmailAddress : must be meet RFC 5321/5322
+ * @return bool : "true" if user is an admin. false otherwise.
+ */
+function isUserAdmin($userEmailAddress)
+{
+    $result = false;
+
+    $loginQuery = "SELECT isAdmin FROM users WHERE userEmailAddress =:femail";
+
+    require_once 'model/dbConnector.php';
+    $params = array(':femail' => $userEmailAddress);
+    $queryResult = executeQuerySelect($loginQuery,$params);
+
+    if (count($queryResult) == 1) {
+        $result = $queryResult[0]['isAdmin'];
+    }
+    return $result;
+}
+
+/**
  * @brief This function is designed to verify user's login
  * @param $userEmailAddress : must be meet RFC 5321/5322
  * @param $userPsw : users's password
